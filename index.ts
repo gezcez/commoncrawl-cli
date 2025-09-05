@@ -39,8 +39,8 @@ async function fetchJSON(
 program.name("@gezcez/commoncrawl-cli").description("simple cli tool for commoncrawl.org").version(version)
 
 program
-	.alias("ca")
 	.command("check-all")
+   .alias("ca")
 	.description("searches every index with the given term")
 	.option("-t, --term <search url>", "Search term to use")
 	.option("-o, --output <output file>", "Output file to save results")
@@ -107,9 +107,9 @@ async function fetchResultsFromIndexes(
 		if (outfile) {
 			await handleResultSave(result, outfile)
 		}
-		results.push(result)
+		results.push(...result)
 	}
-	return results.reduce((a, b) => a.concat(b), [])
+	return results
 }
 async function __fetchCrawlKey(cdx_url: string, term: string, i: string,total_result_count:number) {
 	const url = `${cdx_url}?${new URLSearchParams({ url: term, output: "json" })}`
@@ -130,13 +130,13 @@ async function sleep(seconds: number) {
    const start = Date.now()
 	while (start + seconds * 1000 < Date.now()) {
       // nothing
-      overwrite("Sleeping", seconds, "seconds")
+      // overwrite("Sleeping", seconds, "seconds")
 
 	}
 	return true
 }
 async function handleResultSave(results: ICrawlEntry[], outfile: string) {
-	console.log(`[...] Writing ${results.length} results`)
+	// console.log(`[...] Writing ${results.length} results`)
 	await appendFile(outfile, results.map((e) => e.url).join("\n"), (cb) => {
 		if (cb?.errno) {
 			console.error(`ERROR: ${cb.message}`)

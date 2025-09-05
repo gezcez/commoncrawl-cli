@@ -1,6 +1,6 @@
 {
   "name": "@gezcez/commoncrawl-cli",
-  "version": "1.0.9",
+  "version": "1.0.91",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {

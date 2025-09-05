@@ -36,7 +36,7 @@ async function fetchJSON(
 	const json = (await result.json()) as any
 	return json
 }
-program.name("@gezcez/commoncrawler-cli").description("simple cli tool for commoncrawler.org").version(version)
+program.name("@gezcez/commoncrawl-cli").description("simple cli tool for commoncrawl.org").version(version)
 
 program
 	.alias("ca")
@@ -145,7 +145,7 @@ async function handleResultSave(results: ICrawlEntry[], outfile: string) {
 }
 async function __fetchCrawlIndexes() {
 	const result = (await fetchJSON(URLS["list-crawls"], {
-		headers: { "User-Agent": `@gezcez/commoncrawler-cli ${version}` }
+		headers: { "User-Agent": `@gezcez/commoncrawl-cli ${version}` }
 	})) as ICrawlIndex[]
 	return result.map((e: any) => e["cdx-api"]) as string[]
 }

@@ -16,6 +16,10 @@
   "bin": {
     "@gezcez/commoncrawl-cli": "./index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gezcez/commoncrawl-cli"
+  },
   "dependencies": {
     "commander": "^14.0.0"
   }
